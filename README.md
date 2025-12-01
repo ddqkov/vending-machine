@@ -48,64 +48,10 @@ For example:
 http://my-ip:8000/about.html
 ```
 
-### Dev process
-There is an `index.html` file that shows the contents of your dev env (i.e. a pretty server listing).
+## Valid coin denominations
 
-This file doesn't get built.
-
-## How to load assets
-
-### HTML assets
-
-Assets loaded from build/assets where build is the root:
+Valid coin denominations are: €0.05 • €0.10 • €0.20 • €0.50 • €1 • €2
 
 ```
-<img src="assets/images/my-image.png" alt="">
+const validCoins = [.05, 0.10, 0.20, 0.50, 1, 2];
 ```
-
-Loading vendor CSS or JS:
-
-```
-<link rel="stylesheet" href="/assets/vendor/my-style.css" type="text/css" media="all" />
-<script type="text/javascript" src="/assets/vendor/my-script.js"></script>
-```
-
-### CSS assets
-
-Fonts start from build with a slash (/):
-
-```
-url('/assets/fonts/my-font.woff') format('woff');
-```
-
-The path for CSS background images start from assets as well.
-
-```
-background: url(/assets/images/images/temp/logo.png) 0 0 no-repeat;
-```
-
-### AJAX assets
-
-Use `./` in your local AJAX URLs.
-
-```
-<a href="./ajax/popup.html" class="js-popup">Popup</a>
-```
-
----
-
-Responsive mixin disclaimer:
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-======
-
-### Missing fetures:
-
-* Autoprefixer - note that there is no autoprefixer. You'll need to handle vendor prefixes yourself when needed.

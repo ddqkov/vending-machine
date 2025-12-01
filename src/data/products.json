@@ -33,5 +33,40 @@
     "price": 2.50,
     "quantity": 8,
     "logo": "public/assets/images/temp/chips.png"
+  },
+  {
+    "id": 6,
+    "name": "Chocolate",
+    "price": 3.0,
+    "quantity": 7,
+    "logo": "public/assets/images/temp/chocolate.png"
+  },
+  {
+    "id": 7,
+    "name": "Nuts",
+    "price": 2.0,
+    "quantity": 14,
+    "logo": "public/assets/images/temp/nuts.png"
+  },
+  {
+    "id": 8,
+    "name": "Moreni",
+    "price": 0.90,
+    "quantity": 3,
+    "logo": "public/assets/images/temp/moreni.png"
+  },
+  {
+    "id": 9,
+    "name": "Brownie",
+    "price": 1.90,
+    "quantity": 13,
+    "logo": "public/assets/images/temp/brownie.webp"
+  },
+  {
+    "id": 10,
+    "name": "Nestea",
+    "price": 1.20,
+    "quantity": 12,
+    "logo": "public/assets/images/temp/nestea.jpg"
   }
 ]

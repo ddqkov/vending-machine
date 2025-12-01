@@ -14,20 +14,20 @@ const MachineMoneyInput = ({ setBalance }) => {
     const [leftover, setLeftover] = useState(0);
 
     const calculateInsertable = (value) => {
-        let remaining = value;
+        let remaining = Math.round(value * 100);
         let inserted = 0;
 
         for (let coin of ValidCoins) {
-            while (remaining >= coin - 0.0001) {  
-                inserted += coin;
-                remaining -= coin;
-                remaining = parseFloat(remaining.toFixed(2));
+            const coinCents = Math.round(coin * 100);
+            while (remaining >= coinCents) {
+                inserted += coinCents;
+                remaining -= coinCents;
             }
         }
 
         return {
-            inserted: parseFloat(inserted.toFixed(2)),
-            leftover: parseFloat(remaining.toFixed(2))
+            inserted: inserted / 100,
+            leftover: remaining / 100
         };
     };
 

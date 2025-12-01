@@ -1,6 +1,7 @@
 /**
  * External dependencies.
 */
+import { useState } from 'react';
 
 /**
  * Internal dependencies.
@@ -10,17 +11,32 @@ import MachineMoneyInput from '@/components/machine-money-input/machine-money-in
 import CardProducts from '@/components/cards-product/card-product';
 import Grid from '@/components/grid/grid';
 
-const VendingMachine = ({productsData, balance, setBalance}) => {
-    console.log(balance);
+const VendingMachine = ({productsData, balance, setBalance, setProductsData}) => {
+    const [insufficientFunds, setInsufficientFunds] = useState({ show: false, amount: 0 });
+    
+    const getRemainingBalance = (product) => {
+        return balance.total - product.price;
+    }
+
+    const showInsufficientFunds = (amount) => {
+        console.log(amount);
+        
+        setInsufficientFunds({ show: true, amount });
+        setTimeout(() => setInsufficientFunds(prev => ({ ...prev, show: false })), 3000);
+    }
+
     
 	return (
 		<div className="vending-machine">
-            <div className="vending-machine__balance">
-                <MachineBalance balance={balance.total} />
-
+            <div className="vending-machine__balance">  
+                <MachineBalance balance={balance} />
+                {insufficientFunds.show && (
+                    <div className="error-message" style={{ color: 'red', margin: '10px 0' }}>
+                        Not enough money! You need ${insufficientFunds.amount.toFixed(2)} more.
+                    </div>
+                )}
                 <MachineMoneyInput setBalance={setBalance}/>
             </div>
-
 
             <Grid>
                 {productsData.map((productData) => {
@@ -29,7 +45,14 @@ const VendingMachine = ({productsData, balance, setBalance}) => {
                             key={productData.id} 
                             columnCount={5}
                         >
-                            <CardProducts productData={productData}/>
+                            <CardProducts 
+                            balance={balance}
+                            productData={productData}
+                            setBalance={setBalance}
+                            setProductsData={setProductsData}
+                            getRemainingBalance={getRemainingBalance}
+                            showInsufficientFunds={showInsufficientFunds}
+                            />
                         </Grid.Col>
                     )
                 })}

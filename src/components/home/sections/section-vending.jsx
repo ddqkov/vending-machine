@@ -27,7 +27,7 @@ const SectionVending = () => {
 					<Heading level={1}>Vending Machine</Heading>
 				</Section.Head>
 
-				<VendingMachine productsData={productsData} balance={balance} setBalance={setBalance}/>
+				<VendingMachine productsData={productsData} balance={balance} setProductsData={setProductsData} setBalance={setBalance}/>
 			</Shell>
 		</Section>
 	);
