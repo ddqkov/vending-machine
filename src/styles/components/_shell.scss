@@ -7,4 +7,8 @@
 	width: 100%;
 	margin-inline: auto;
 	padding: 0 var(--shell-gutters, 5rem);
+
+	@include breakpoint-down(mobile) {
+		padding: 0 var(--shell-gutters, 2rem);
+	}
 }

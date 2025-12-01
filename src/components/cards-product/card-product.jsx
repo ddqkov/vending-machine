@@ -30,7 +30,7 @@ const CardProducts = ({productData, setBalance, setProductsData, getRemainingBal
         );
         
         setBalance(prevBalance => ({
-            total: 0,
+            total:  prevBalance.total - productData.price,
             leftover:  prevBalance.total - productData.price
         }));
     }

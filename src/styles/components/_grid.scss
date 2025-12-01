@@ -34,5 +34,15 @@
 	.grid__col--1of5 {
 		max-width: 20%;
 		flex: 0 0 20%;
+
+		@include breakpoint-down(tablet) {
+			max-width: calc(100% / 3);
+			flex: 0 0 calc(100% / 3);
+		}
+
+		@include breakpoint-down(mobile) {
+			max-width: 50%;
+			flex: 0 0 50%;
+		}
 	}
 }

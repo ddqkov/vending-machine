@@ -3,4 +3,7 @@
 // ==========================================================================
 
 .machine-balance {
+    @include breakpoint-down(mobile) {
+        text-align: center;
+    }
 }

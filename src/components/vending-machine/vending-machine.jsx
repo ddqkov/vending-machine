@@ -10,6 +10,7 @@ import MachineBalance from '@/components/machine-balance/machine-balance';
 import MachineMoneyInput from '@/components/machine-money-input/machine-money-input';
 import CardProducts from '@/components/cards-product/card-product';
 import Grid from '@/components/grid/grid';
+import Btn from '@/components/btn/btn';
 
 const VendingMachine = ({productsData, balance, setBalance, setProductsData}) => {
     const [insufficientFunds, setInsufficientFunds] = useState({ show: false, amount: 0 });
@@ -19,10 +20,14 @@ const VendingMachine = ({productsData, balance, setBalance, setProductsData}) =>
     }
 
     const showInsufficientFunds = (amount) => {
-        console.log(amount);
-        
         setInsufficientFunds({ show: true, amount });
         setTimeout(() => setInsufficientFunds(prev => ({ ...prev, show: false })), 3000);
+    }
+
+    const handleRefund = () => {
+        setBalance({ total: 0, leftover: 0 });
+        setInsufficientFunds({ show: false, amount: 0 });
+        setProductsData(productsData)
     }
 
     
@@ -30,11 +35,7 @@ const VendingMachine = ({productsData, balance, setBalance, setProductsData}) =>
 		<div className="vending-machine">
             <div className="vending-machine__balance">  
                 <MachineBalance balance={balance} />
-                {insufficientFunds.show && (
-                    <div className="error-message" style={{ color: 'red', margin: '10px 0' }}>
-                        Not enough money! You need ${insufficientFunds.amount.toFixed(2)} more.
-                    </div>
-                )}
+
                 <MachineMoneyInput setBalance={setBalance}/>
             </div>
 
@@ -57,6 +58,16 @@ const VendingMachine = ({productsData, balance, setBalance, setProductsData}) =>
                     )
                 })}
             </Grid>
+
+            <div className="vending-machine__foot">
+                {insufficientFunds.show && (
+                    <div className="error-message">
+                        Not enough money! You need ${insufficientFunds.amount.toFixed(2)} more.
+                    </div>
+                )}
+
+                <Btn onClick={handleRefund}>Refund</Btn>
+            </div>
         </div>
 	);
 };
