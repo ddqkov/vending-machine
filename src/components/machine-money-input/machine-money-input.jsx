@@ -1,26 +1,49 @@
 /**
  * External dependencies.
  */
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 /**
  * Internal dependencies.
  */
 import Btn from '@/components/btn/btn';
+import ValidCoins from '@/enums/validCoins';
 
 const MachineMoneyInput = ({ setBalance }) => {
     const inputRef = useRef(null);
+    const [leftover, setLeftover] = useState(0);
+
+    const calculateInsertable = (value) => {
+        let remaining = value;
+        let inserted = 0;
+
+        for (let coin of ValidCoins) {
+            while (remaining >= coin - 0.0001) {  
+                inserted += coin;
+                remaining -= coin;
+                remaining = parseFloat(remaining.toFixed(2));
+            }
+        }
+
+        return {
+            inserted: parseFloat(inserted.toFixed(2)),
+            leftover: parseFloat(remaining.toFixed(2))
+        };
+    };
 
     const handleInput = (e) => {
         e.preventDefault();
 
-        const value = parseFloat(inputRef.current.value);
+        const rawValue = parseFloat(inputRef.current.value);
+        if (isNaN(rawValue)) return;
 
-        if (isNaN(value)) return;
+        const { inserted, leftover } = calculateInsertable(rawValue);
 
-        setBalance(prev => {
-            return {...prev, total: prev.total + value};
-        });
+        setBalance(prev => ({
+            ...prev,
+            total: prev.total + inserted,
+            leftover: prev.leftover + leftover
+        }));
 
         inputRef.current.value = "";
     };
@@ -46,6 +69,12 @@ const MachineMoneyInput = ({ setBalance }) => {
                 <span className="machine__money-info">
                     Please insert only: €0.05 • €0.10 • €0.20 • €0.50 • €1 • €2
                 </span>
+
+                {leftover > 0 && (
+                    <span className="machine__money-leftover">
+                        Leftover: €{leftover.toFixed(2)} cannot be inserted
+                    </span>
+                )}
             </div>
         </form>
     );

@@ -11,6 +11,8 @@ import CardProducts from '@/components/cards-product/card-product';
 import Grid from '@/components/grid/grid';
 
 const VendingMachine = ({productsData, balance, setBalance}) => {
+    console.log(balance);
+    
 	return (
 		<div className="vending-machine">
             <div className="vending-machine__balance">

@@ -17,7 +17,7 @@ const SectionVending = () => {
 	const [productsData, setProductsData] = useState(machineProductsData);
 	const [balance, setBalance] = useState({
 		total: 0,
-		leftOver: 0,
+		leftover: 0,
 	});
 				
 	return (
