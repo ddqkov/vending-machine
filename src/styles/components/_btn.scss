@@ -1,0 +1,80 @@
+// ==========================================================================
+// Btn
+// ==========================================================================
+
+.btn {
+	display: inline-flex;
+	vertical-align: middle;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	text-decoration: none;
+	appearance: none;
+	transition: background-color var(--t-duration);
+	line-height: 1;
+	border: none;
+	outline: none;
+	color: #1d364d;
+	font-weight: 500;
+	padding: 1rem 2rem 1.1rem;
+	border-radius: 28px;
+	background-color: #ebedec;
+	appearance: none;
+	color: #1d364d;
+	border: 1px solid #ebedec;
+
+	img {
+		margin: 0.3rem 0 0 0.5rem;
+	}
+
+	@include hover {
+		background-color: transparent;
+		color: var(--c-white);
+	}
+
+	&.btn--outline {
+		border: 1px solid #e0e0e0;
+		background-color: transparent;
+
+		@include hover {
+			background-color: #e0e0e0;
+		}
+	}
+
+	&.btn--black {
+		background-color: #000;
+		color: #fff;
+		border: 1px solid #000;
+
+		@include hover {
+			background-color: transparent;
+			color: #000;
+		}
+	}
+
+	&.btn--green {
+		background-color: #2d9c07;
+		color: #fff;
+		border: 1px solid #2d9c07;
+		border-radius: 0;
+
+		@include hover {
+			background-color: transparent;
+			color: #2d9c07;
+		}
+	}
+
+	&.btn--large {
+		min-width: 13.3rem;
+	}
+
+	&.btn--full {
+		width: 100%;
+	}
+}
+
+// Btn block
+.btn--block {
+	display: block;
+	padding-inline: 0;
+}
