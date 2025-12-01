@@ -8,18 +8,23 @@
 import Heading from '@/components/heading/heading';
 import Btn from '@/components/btn/btn';
 
-const CardProducts = () => {
+const CardProducts = ({productData}) => {
     return (
         <div className="card-product">
+            <span className="card__quantity">{productData.quantity}</span>
+            
             <div className="product-logo">
-                <img src="public/assets/images/temp/shopping-bag.png" alt="" />
+                <img src={productData.logo} alt="" />
             </div>
 
-            <Heading level={6}>Chips</Heading>
+            <div className="card__content">
+                <Heading level={6}>{productData.name}</Heading>
 
-            <p>€1.00</p>
+                <p>€{productData.price.toFixed(2)}</p>
 
-            <Btn>Buy</Btn>
+                <Btn className="btn--full">Buy</Btn>
+            </div>
+
         </div>
     );
 }

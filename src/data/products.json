@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Cola",
+    "price": 1.95,
+    "quantity": 10,
+    "logo": "public/assets/images/temp/cola.webp"
+  },
+  {
+    "id": 2,
+    "name": "Soda",
+    "price": 1.50,
+    "quantity": 15,
+    "logo": "public/assets/images/temp/soda.png"
+  },
+  {
+    "id": 3,
+    "name": "Fanta",
+    "price": 1.85,
+    "quantity": 12,
+    "logo": "public/assets/images/temp/fanta.png"
+  },
+  {
+    "id": 4,
+    "name": "Water",
+    "price": 1,
+    "quantity": 11,
+    "logo": "public/assets/images/temp/water.png"
+  },
+  {
+    "id": 5,
+    "name": "Chips",
+    "price": 2.50,
+    "quantity": 8,
+    "logo": "public/assets/images/temp/chips.png"
+  }
+]

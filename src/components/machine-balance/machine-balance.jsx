@@ -7,10 +7,10 @@
 */
 import Heading from '@/components/heading/heading';
 
-const MachineBalance = () => {
+const MachineBalance = ({ balance }) => {
     return (
         <div className="machine-balance">
-            <Heading level={2}>Balance: €0.00</Heading>
+            <Heading level={2}>Balance: €{balance.toFixed(2)}</Heading>
         </div>
     );
 }

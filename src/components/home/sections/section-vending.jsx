@@ -1,19 +1,25 @@
 /**
  * External dependencies.
  */
+import { useState } from 'react';
 
 /**
  * Internal dependencies.
  */
+import machineProductsData from '@/data/products.json';
+
 import Section from '@/components/section/section';
 import Shell from '@/components/shell/shell';
 import Heading from '@/components/heading/heading';
-import MachineBalance from '@/components/machine-balance/machine-balance';
-import MachineMoneyInput from '@/components/machine-money-input/machine-money-input';
-import CardProducts from '@/components/cards-product/card-product';
-import Grid from '@/components/grid/grid';
+import VendingMachine from '@/components/vending-machine/vending-machine';
 
 const SectionVending = () => {
+	const [productsData, setProductsData] = useState(machineProductsData);
+	const [balance, setBalance] = useState({
+		total: 0,
+		leftOver: 0,
+	});
+				
 	return (
 		<Section className='section-vending'>
 			<Shell>
@@ -21,18 +27,7 @@ const SectionVending = () => {
 					<Heading level={1}>Vending Machine</Heading>
 				</Section.Head>
 
-				<Section.Body>
-					<MachineBalance />
-
-					<MachineMoneyInput />
-
-					<Grid>
-						<Grid.Col columnCount={5}>
-							<CardProducts/>
-						</Grid.Col>
-					</Grid>
-
-				</Section.Body>
+				<VendingMachine productsData={productsData} balance={balance} setBalance={setBalance}/>
 			</Shell>
 		</Section>
 	);
