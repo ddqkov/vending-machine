@@ -38,6 +38,11 @@ const MachineMoneyInput = ({ setBalance }) => {
         if (isNaN(rawValue)) return;
 
         const { inserted, leftover } = calculateInsertable(rawValue);
+        setLeftover(leftover);
+
+        if (leftover > 0) {
+            setTimeout(() => setLeftover(0), 1500);
+        }
 
         setBalance(prev => ({
             ...prev,
@@ -47,6 +52,7 @@ const MachineMoneyInput = ({ setBalance }) => {
 
         inputRef.current.value = "";
     };
+    
 
     return (
         <form onSubmit={handleInput}>
@@ -71,9 +77,9 @@ const MachineMoneyInput = ({ setBalance }) => {
                 </span>
 
                 {leftover > 0 && (
-                    <span className="machine__money-leftover">
-                        Leftover: €{leftover.toFixed(2)} cannot be inserted
-                    </span>
+                    <div className="machine__money-leftover">
+                        <p>Coins refunded: <strong>€{leftover.toFixed(2)}</strong></p>
+                    </div>
                 )}
             </div>
         </form>
